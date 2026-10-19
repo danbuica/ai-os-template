@@ -1,0 +1,82 @@
+{
+  "description": "AI OS: checks for updates when a session starts (quiet unless it fails), and moves this session's robot in the 3D explorer.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "git -c \"alias.aios-start=!sh .os/session-start.sh codex\" aios-start",
+            "timeout": 30
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "git -c \"alias.aios-live=!sh .os/live.sh codex start\" aios-live",
+            "async": true,
+            "timeout": 15
+          },
+          {
+            "type": "command",
+            "command": "git -c \"alias.aios-apps=!sh .os/apps.sh refresh codex\" aios-apps",
+            "async": true,
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "git -c \"alias.aios-live=!sh .os/live.sh codex prompt\" aios-live",
+            "async": true,
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "git -c \"alias.aios-live=!sh .os/live.sh codex tool\" aios-live",
+            "async": true,
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "git -c \"alias.aios-live=!sh .os/live.sh codex stop\" aios-live",
+            "async": true,
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "git -c \"alias.aios-live=!sh .os/live.sh codex end\" aios-live",
+            "async": true,
+            "timeout": 15
+          }
+        ]
+      }
+    ]
+  }
+}

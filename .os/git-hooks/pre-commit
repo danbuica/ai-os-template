@@ -1,0 +1,62 @@
+#!/bin/sh
+# Safety check that runs before every commit (every save to the company's history).
+# The startup hook switches it on for each computer (git config core.hooksPath .os/git-hooks).
+#
+# It stops the commit when:
+#   1. a secrets file (.env), a document from inbox/ or a file from outputs/ is about to be saved,
+#   2. the changes contain something that looks like a password, API key or private key,
+#   3. the changes touch the startup scripts or .os/ outside an OS update
+#      (these run by themselves on every teammate's computer, so they only change through update-os).
+# It never prints the secret itself, only the file name.
+#
+# You can also run it by hand to check what's staged: sh .os/git-hooks/pre-commit
+
+staged="$(git diff --cached --name-only --diff-filter=ACMR)"
+[ -z "$staged" ] && exit 0
+
+problems=""
+add() { problems="$problems
+$1"; }
+
+# 1. Files that must never be saved
+secret_files="$(printf '%s\n' "$staged" | grep -E '(^|/)\.env($|\.)' | grep -v -E '(^|/)\.env\.example$')"
+[ -n "$secret_files" ] && add "Secrets file (keys belong only in .env on your computer): $(echo $secret_files)"
+
+inbox_files="$(printf '%s\n' "$staged" | grep -E '^inbox/' | grep -v -E '^inbox/\.gitkeep$')"
+[ -n "$inbox_files" ] && add "Documents from inbox/ (they are only read, never saved): $(echo $inbox_files)"
+
+output_files="$(printf '%s\n' "$staged" | grep -E '^outputs/' | grep -v -E '^outputs/\.gitkeep$')"
+[ -n "$output_files" ] && add "Files from outputs/ (what skills make stays on this computer): $(echo $output_files)"
+
+# 2. Things that look like keys or passwords in the new lines
+strict='sk-[A-Za-z0-9_-]{20,}|AKIA[0-9A-Z]{16}|gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{30,}|xox[abprs]-[A-Za-z0-9-]{10,}|AIza[0-9A-Za-z_-]{35}|-----BEGIN [A-Z ]*PRIVATE KEY-----|[rsp]k_live_[0-9A-Za-z]{16,}'
+loose="(api[_-]?key|secret|token|passw(or)?d)[\"']?[[:space:]]*[:=][[:space:]]*[\"']?[A-Za-z0-9/+_=-]{16,}"
+
+key_files="$(printf '%s\n' "$staged" | while IFS= read -r f; do
+  [ -n "$f" ] || continue
+  added="$(git diff --cached -U0 --no-color -- "$f" | grep '^+' | grep -v '^+++')"
+  if printf '%s\n' "$added" | grep -q -E -e "$strict" || printf '%s\n' "$added" | grep -q -i -E -e "$loose"; then
+    echo "$f"
+  fi
+done)"
+[ -n "$key_files" ] && add "Something that looks like a password or API key in: $(echo $key_files)"
+
+# 3. Startup scripts and OS files: only through update-os
+if [ "${AIOS_UPDATE:-}" != "1" ]; then
+  os_files="$(printf '%s\n' "$staged" | grep -E '^(\.os/|\.claude/settings\.json$|\.codex/hooks\.json$|\.agents/hooks\.json$)')"
+  [ -n "$os_files" ] && add "OS files that run by themselves on every computer (change them only with the update-os skill): $(echo $os_files)"
+fi
+
+[ -z "$problems" ] && exit 0
+
+cat >&2 <<EOF
+
+STOPPED: nothing was saved. This commit includes something that must not go into the company's history:
+$problems
+
+What to do: take those changes out (git restore --staged <file>) and try again.
+Keys and passwords belong only in the .env file, which never leaves your computer.
+If you're sure this is a false alarm, ask an admin before going further.
+
+EOF
+exit 1

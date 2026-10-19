@@ -1,0 +1,6 @@
+# Keeps script files working on every computer.
+# Windows changes line endings when it downloads files; shell scripts break with Windows line endings.
+* text=auto
+*.sh text eol=lf
+.os/git-hooks/* text eol=lf
+*.ps1 text eol=crlf

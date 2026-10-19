@@ -1,0 +1,51 @@
+{
+  "aios-session-start": {
+    "SessionStart": [
+      {
+        "type": "command",
+        "command": "git -c \"alias.aios-start=!sh .os/session-start.sh antigravity\" aios-start",
+        "timeout": 30
+      }
+    ]
+  },
+  "aios-live": {
+    "SessionStart": [
+      {
+        "type": "command",
+        "command": "git -c \"alias.aios-live=!sh .os/live.sh antigravity start\" aios-live",
+        "timeout": 10
+      },
+      {
+        "type": "command",
+        "command": "git -c \"alias.aios-apps=!sh .os/apps.sh refresh antigravity\" aios-apps",
+        "timeout": 10
+      }
+    ],
+    "PreInvocation": [
+      {
+        "type": "command",
+        "command": "git -c \"alias.aios-live=!sh .os/live.sh antigravity invoke\" aios-live",
+        "timeout": 10
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "git -c \"alias.aios-live=!sh .os/live.sh antigravity tool\" aios-live",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "type": "command",
+        "command": "git -c \"alias.aios-live=!sh .os/live.sh antigravity stop\" aios-live",
+        "timeout": 10
+      }
+    ]
+  }
+}

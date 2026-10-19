@@ -1,0 +1,36 @@
+# Secrets: keys live only in .env, on your own computer
+.env
+.env.*
+!.env.example
+
+# Drop zone for documents: they are read, never uploaded
+inbox/*
+!inbox/.gitkeep
+
+# What skills make for people (reports, drafts, exports): kept on each computer, never uploaded
+outputs/*
+!outputs/.gitkeep
+
+# Made by each computer automatically (a link or copy of .agents/skills)
+.claude/skills
+
+# The 3D explorer's data: made on each computer from this OS
+explorer/data.js
+explorer/session.js
+explorer/live.js
+explorer/apps.js
+explorer/live/
+# Optional add-ons for the explorer, kept on this computer only
+explorer/extras.js
+
+# Personal Claude Code settings
+.claude/settings.local.json
+
+# OS junk files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# company:extra:start
+# Add your own lines between these two markers. Updates keep them.
+# company:extra:end
