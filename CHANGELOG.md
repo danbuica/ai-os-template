@@ -3,6 +3,10 @@
 What changed in each version of the AI OS template. Newest first.
 `update-os` shows the part between your version and the new one.
 
+## 1.1.1 (2026-10-20)
+
+- When a skill needs an app that isn't connected in the AI app someone is using, the AI now stops and tells them which app is missing and how to connect it, instead of working around it. Connections are personal: each teammate connects their own apps.
+
 ## 1.1.0 (2026-10-20)
 
 - A simpler install: you make your private copy on GitHub with **Use this template**, then paste one message so your AI installs git and the GitHub CLI, signs you in and downloads it. Then you start a session in that folder and type `/setup-os`.

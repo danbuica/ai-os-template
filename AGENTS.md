@@ -59,6 +59,8 @@ This check is honest but soft: someone could change their git email. Real protec
 
 Skills live in `.agents/skills/<name>/SKILL.md`. Always edit them there. `.claude/skills` is a link or copy that each computer makes by itself, so never edit inside it.
 
+App connections (connectors, plugins, MCP servers) are personal: each person connects their apps in their own AI app, with their own account. If a skill needs an app that isn't connected in the AI app you're running in, stop before that step and tell the person in plain words which app is missing, that connections are personal, and how to connect it in this app (see `context/tools.md` and this app's current docs). Don't work around it with another way on your own.
+
 | Skill | Who | Use it when... |
 |---|---|---|
 | os-guide | everyone | someone asks what this is, what they can do, or where to start |

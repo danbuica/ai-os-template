@@ -20,4 +20,5 @@ description: <What it does, in one or two sentences.> Use when <the situations o
 
 ## If something goes wrong
 
+- A connection it needs isn't set up in this AI app: stop, say which app, and how to connect it here (AGENTS.md, section 7). Connections are personal.
 - <Common problem>: <what to do>
