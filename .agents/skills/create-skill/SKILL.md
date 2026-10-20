@@ -27,7 +27,7 @@ Create `.agents/skills/<name>/SKILL.md` from `assets/skill-template.md`:
 - **Steps:** plain, numbered, short. Under about 500 lines; put long reference material in a `references/` file inside the skill folder.
 - If the skill makes files for people (reports, drafts, exports), it saves them in `outputs/<name>/`, with the date at the start of each file name. That folder is never uploaded (AGENTS.md, section 6).
 - Templates and examples go in the skill's own `assets/` folder. API code goes in `scripts/<name>/` at the top of the repo, reading keys from `.env`. Add each key's **name** to `.env.example`, never its value.
-- Never put secrets or personal data about real people in the skill.
+- Never put secrets in the skill. Keys go in `.env`.
 
 ## 4. Make every tool see it
 

@@ -19,7 +19,7 @@ Run `git pull --ff-only`.
 ## 2. Admins: check what's being saved
 
 1. Run `git status` and `git diff`. List the changed files in plain words and confirm the work is **finished**. Never upload half-done work.
-2. Read the changes for **personal data about real clients or people** (names, contact details, private facts). If you find any, stop and suggest a general version instead. The only exception is the five work details in `team.md`.
+2. Read the changes for **personal details about real people** (names, contact details, private facts) outside `team.md`. If there are some the admin hasn't already chosen to keep, mention them in one line and ask whether to go ahead (AGENTS.md, section 6). Their choice.
 3. Stage only the files that belong to this change: `git add <files>`. Never stage `.env` or `inbox/`.
 4. The safety check runs by itself when you commit and blocks keys, passwords, `.env`, inbox documents and changes to the startup scripts. If it says **STOPPED**, explain its message and fix the cause. Never get around it.
 

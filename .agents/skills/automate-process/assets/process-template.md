@@ -23,4 +23,4 @@
 
 ## A real recent example (for testing)
 
-<One real case, described without personal data: "an order for 3 items from a returning customer".>
+<One real case: "an order for 3 items from a returning customer".>

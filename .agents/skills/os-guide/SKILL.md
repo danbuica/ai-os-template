@@ -10,7 +10,7 @@ description: Explains what the company's AI OS is, lists the skills this person'
 1. **Find their role** (AGENTS.md, section 4): admin, user, or not in `team.md` yet. If `context/` doesn't exist, the OS isn't set up yet; skip to step 4.
 
 2. **Explain the OS in a few plain sentences**, for example:
-   > This folder is your company's AI operating system. It holds what the AI needs to know about the company (what you do, sell and how you talk) and skills: ready-made routines for common jobs. Everyone on the team shares it through GitHub, in Claude Code, Codex or Antigravity. Stable company rules live here; day-to-day notes about clients don't. They'll go in the company's second brain, coming later.
+   > This folder is your company's AI operating system. It holds what the AI needs to know about the company (what you do, sell and how you talk) and skills: ready-made routines for common jobs. Everyone on the team shares it through GitHub, in Claude Code, Codex or Antigravity. Stable company knowledge lives here; day-to-day notes fit better in a second brain, coming later.
 
 3. **List the skills they can use**, from the tables in AGENTS.md section 7 (the template's and the company's own), with one line each:
    - **Admin:** all of them.

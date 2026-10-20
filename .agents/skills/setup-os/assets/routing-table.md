@@ -2,7 +2,7 @@
 |---|---|
 | what the company does, its rules, who covers which role | context/company.md |
 | products, services, prices, packages | context/offer.md |
-| customer types, their problems, why they choose us | context/customers.md |
+| our customers and clients, their problems, why they choose us | context/customers.md |
 | writing anything in the company's voice | context/voice.md |
 | which app we use for what, and how the AI reaches it | context/tools.md |
 | how a specific process works | context/processes/<process>.md |

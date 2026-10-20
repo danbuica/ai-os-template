@@ -1,6 +1,6 @@
 ---
 name: add-context
-description: Adds company knowledge to the context files from three sources - links (web pages), documents dropped into the inbox/ folder, or the memory of another AI like ChatGPT or Claude. Shows what goes where before writing, keeps personal data out, then uploads. Admins only. Use when someone wants to "teach the AI", add documents, add a website, or import what another AI knows.
+description: Adds company knowledge to the context files from three sources - links (web pages), documents dropped into the inbox/ folder, or the memory of another AI like ChatGPT or Claude. Shows what goes where before writing, lets the admin choose what to keep about real people, then uploads. Admins only. Use when someone wants to "teach the AI", add documents, add a website, or import what another AI knows.
 ---
 
 # add-context
@@ -26,7 +26,7 @@ Read the links, the files in `inbox/` (skip `.gitkeep`), or the pasted answer.
 
 Decide which context file each piece belongs in (see the routing table in AGENTS.md): `company.md`, `offer.md`, `customers.md`, `voice.md`, `tools.md`, or `context/processes/<name>.md`. Create a new context file only when nothing fits, and add it to the routing table in AGENTS.md (between the `company:routing` markers).
 
-**Keep personal data out.** Leave out names, contact details and private facts about real clients and people. Keep the general lesson instead ("customers often ask for X" rather than "Anna from Acme asked for X"). Leave out keys and passwords too. Tell them what you left out and why: that information belongs in the second brain (coming later), not here.
+**About real people, the admin chooses.** Client names and what you do for each client are fine to file. If the material has personal details about real people (names, contact details, private facts), point them out in the plan and, the first time, explain in plain words what saving them means (AGENTS.md, section 6). Then keep or leave out what they choose. **Keys and passwords always stay out:** they only ever go in `.env`.
 
 ## 4. Show before writing
 
@@ -34,7 +34,8 @@ Show a short plan, file by file, with the exact text you'll add or change:
 
 > **offer.md**: add "Website audit, €450, one-off" to the price table
 > **voice.md**: add two example messages
-> **Left out:** 3 client names and an email address (personal data)
+> **customers.md**: add the client list (5 business names and what we do for each)
+> **About real people:** 1 client contact's email address. Keep it or leave it out?
 
 If new information contradicts what's already there (for example a different price), show both and ask which is right. Write nothing until they say yes.
 

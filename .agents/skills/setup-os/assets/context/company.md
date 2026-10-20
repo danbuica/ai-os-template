@@ -1,6 +1,6 @@
 # The company
 
-<!-- Stable facts about the company. Admins edit this. No personal data about real clients or people. -->
+<!-- Stable facts about the company. Admins edit this. -->
 
 ## What we do
 

@@ -33,8 +33,8 @@ This repo is the **empty template**. It contains no company's information.
 ## Stable rules vs. day-to-day memory
 
 - **Context files** (in this repo) are the company's stable rules. Admins edit them. They're shared with everyone through GitHub.
-- **Day-to-day memory** (what happened in a meeting, what a client said, notes about real people) belongs in the company's **second brain**, where everyone can write and where deleting really works. Second brain support is coming in a later version.
-- **Never put personal data about real clients or people in this repo.** Git keeps every version forever, so it can't truly be deleted. The only exception is `team.md`, which holds each teammate's work contact details because the OS needs them.
+- **Day-to-day memory** (what happened in a meeting, what a client said) fits better in a **second brain**, where everyone can write and where deleting really works. Second brain support is coming in a later version.
+- **What goes in this repo is your choice**, including client names and notes about people. The first time the AI is about to save personal details about real people, it tells you what that means and then does what you decide: everyone on the team can read this repo, and git keeps every old version forever, so something saved here can't be fully deleted later. Depending on where you work, data protection laws such as the GDPR may apply. Keys and passwords are the exception: they only ever go in `.env`.
 
 ---
 
@@ -56,22 +56,23 @@ Anything else the OS needs (git and GitHub's own tool), your AI installs for you
 
 ## Getting your company's copy (first admin, once)
 
-1. Open your AI app and start a session in a folder you work in, for example Documents.
-2. Paste this message:
+1. **Make your private copy on GitHub.** Sign in at [github.com](https://github.com) (or create a free account), open [the template](https://github.com/danbuica/ai-os-template), click **Use this template**, then **Create a new repository**. Pick the **Owner** (your account, or your company's organization), give it a **Repository name**, choose **Private**, and click **Create repository from template**. Don't fork it: forks of public repos are always public.
+2. **Get an AI app** (see "What you need"), open it, and start a session on this computer in a folder you work in, for example Documents.
+3. **Paste this message**, with your copy's address in the first line:
 
    ```text
-   Please install the AI OS for my company from this template: https://github.com/danbuica/ai-os-template
+   Please set up my AI OS on this computer. My private copy is here: https://github.com/YOUR-ACCOUNT/YOUR-REPO
 
    1. Check that git and the GitHub CLI (gh) are installed. If anything is missing, install it, but ask me first.
-   2. Make sure I'm signed in to GitHub with gh. If I'm not, start the sign-in and I'll finish it in my browser.
-   3. Ask me which GitHub organization or account should own it, and what to call it. Then create a new private repository from the template (gh repo create OWNER/NAME --template danbuica/ai-os-template --private --clone). Never fork it: forks of public repos are public.
-   4. In the new folder, add the template as a remote called upstream.
-   5. Read AGENTS.md there, then follow .agents/skills/setup-os/SKILL.md with me, step by step.
-   6. When we're done, tell me how to open that folder in this app for future sessions.
+   2. Sign me in to GitHub with gh in my browser, and set git to use that sign-in.
+   3. Download my copy into this folder.
+   4. In the new folder, add the template as a remote called upstream: https://github.com/danbuica/ai-os-template
+   5. Tell me how to open that folder in this app, so I can start a new session there.
    ```
 
-3. Sign in to GitHub in your browser when it asks, and approve its steps. It makes your company's **private** copy (never a public fork), downloads it, and goes straight on to setup: a short interview, one question at a time, about 30 to 45 minutes.
-4. From then on, start your sessions in your company's new folder. Your AI tells you where it is.
+4. **Sign in to GitHub** in your browser when it asks, and say yes to its steps when they match what you asked.
+5. **Open the new folder**, start a new session there, and type `/setup-os` (`$setup-os` in Codex). It asks for what you already have (documents, your website, what another AI knows about your business), reads it, and only asks you about what's missing. About 30 to 45 minutes.
+6. From then on, start your sessions in that folder, so the AI loads your OS each time.
 
 Tip: put the copy under a free **GitHub organization** for your company, so teammates can get read-only access (see "Admins and users").
 

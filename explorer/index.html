@@ -701,7 +701,7 @@
         title: "Company knowledge", path: "context/", story: "learn",
         who: "Admins change it. Everyone's AI reads it.",
         body: function () {
-          var h = '<p class="lead">The company\'s stable rules: what you do, what you sell, who your customers are and how you talk. Day-to-day notes about real clients don\'t go here.</p>';
+          var h = '<p class="lead">The company\'s stable rules: what you do, what you sell, who your customers are and how you talk. Day-to-day notes fit better in a second brain.</p>';
           h += '<h3>' + (D.context.length ? plural(D.context.length, "file", "files") : "Files") + '</h3>';
           if (D.context.length) {
             h += '<ul class="items">' + D.context.map(function (c) {
@@ -876,7 +876,7 @@
     var STORIES = [
       { id: "start", title: "Starting a session", line: "The quiet update check every time someone opens the AI." },
       { id: "question", title: "Answering a question", line: "How the AI finds the right file, and only that file." },
-      { id: "learn", title: "Teaching it something new", line: "Documents in, facts on the right shelves, personal data out." },
+      { id: "learn", title: "Teaching it something new", line: "Documents in, facts on the right shelves, and you choose what's kept." },
       { id: "share", title: "Saving and sharing", line: "The safety check, GitHub, and teammates getting the change." },
       { id: "automate", title: "Automating a task", line: "From a time-eating task to a tested skill." },
       { id: "request", title: "A teammate asks for a change", line: "Roles in practice: users send requests, admins decide." },
@@ -933,20 +933,18 @@
 
     var repoPage = D.repoUrl ? D.repoUrl.replace(/\.git$/, "") : "https://github.com/YOUR-COMPANY/YOUR-REPO";
     var tplPage = (D.templateUrl || "https://github.com/danbuica/ai-os-template.git").replace(/\.git$/, "");
-    var tplSlug = tplPage.replace(/^https:\/\/github\.com\//, "");
     var tplPublished = !/YOUR-/.test(tplPage);
     var viewer = D.viewer;
     var isUser = viewer && !/admin/i.test(viewer.role);
 
     var INSTALL_PROMPT = [
-      "Please install the AI OS for my company from this template: " + tplPage,
+      "Please set up my AI OS on this computer. My private copy is here: https://github.com/YOUR-ACCOUNT/YOUR-REPO",
       "",
       "1. Check that git and the GitHub CLI (gh) are installed. If anything is missing, install it, but ask me first.",
-      "2. Make sure I'm signed in to GitHub with gh. If I'm not, start the sign-in and I'll finish it in my browser.",
-      "3. Ask me which GitHub organization or account should own it, and what to call it. Then create a new private repository from the template (gh repo create OWNER/NAME --template " + tplSlug + " --private --clone). Never fork it: forks of public repos are public.",
-      "4. In the new folder, add the template as a remote called upstream.",
-      "5. Read AGENTS.md there, then follow .agents/skills/setup-os/SKILL.md with me, step by step.",
-      "6. When we're done, tell me how to open that folder in this app for future sessions."
+      "2. Sign me in to GitHub with gh in my browser, and set git to use that sign-in.",
+      "3. Download my copy into this folder.",
+      "4. In the new folder, add the template as a remote called upstream: " + tplPage,
+      "5. Tell me how to open that folder in this app, so I can start a new session there."
     ].join("\n");
     var JOIN_PROMPT = [
       "Please set me up with my company's AI OS: " + repoPage,
@@ -961,24 +959,24 @@
 
     var GUIDES = [
       { id: "basics", group: "Start here", title: "The basics", line: "What a skill is, and the other words you'll see." },
-      { id: "install", group: "Start here", title: "Install the AI OS", line: "Your AI makes your company's private copy and starts the setup.", who: "First admin, once", time: "About 15 minutes", next: "setup",
-        uses: [["place", "Your AI app"], ["place", "GitHub"], ["skill", "setup-os"]],
+      { id: "install", group: "Start here", title: "Install the AI OS", line: "Make your private copy on GitHub, and your AI downloads it.", who: "First admin, once", time: "About 15 minutes", next: "setup",
+        uses: [["place", "GitHub"], ["place", "Your AI app"], ["skill", "setup-os"]],
         steps: [
+          { room: "template", title: "Make your private copy on GitHub", text: "Sign in to GitHub (or create a free account) and open the template. Click Use this template, then Create a new repository. Pick the owner, give it a name, choose Private, and click Create repository from template. Don't fork it: forks of public repos are always public.", cmd: { kind: "link", href: tplPage, label: "Open the template" }, warn: tplPublished ? "" : "This template isn't published yet, so this link is a placeholder." },
           { room: "desk", title: "Get an AI app", text: "Download it, install it and sign in. Teammates can each use a different one.", cmd: { kind: "app" } },
-          { room: "desk", title: "Start a session in a folder you work in", text: "For example your Documents folder. The AI OS will go into a new folder inside it.", cmd: { kind: "start" } },
-          { room: "template", title: "Ask your AI to install it", text: "Paste this whole message. It tells the AI exactly what to do.", cmd: { kind: "say", text: "INSTALL" }, warn: tplPublished ? "" : "This template isn't published yet, so the link in the message is a placeholder." },
-          { room: "github", title: "Sign in and approve", text: "Your AI installs anything missing (asking you first), opens GitHub in your browser so you can sign in, makes your company's private copy and downloads it. Say yes to its steps when they match what you asked." },
-          { room: "desk", title: "Answer the setup questions", text: "It goes straight on to setting up your company: a short interview, one question at a time. The next guide shows what happens." },
-          { room: "desk", title: "From now on, open the new folder", text: "Start future sessions in your company's new folder, so the AI loads your OS each time. Your AI tells you where it is.", cmd: { kind: "start" } }
+          { room: "desk", title: "Start a session in a folder you work in", text: "On this computer, for example in your Documents folder. Your copy will go into a new folder inside it.", cmd: { kind: "start" } },
+          { room: "github", title: "Ask your AI to download it", text: "Paste this whole message, with your copy's address in the first line. It tells the AI exactly what to do.", cmd: { kind: "say", text: "INSTALL" } },
+          { room: "github", title: "Sign in and approve", text: "Your AI installs anything missing (asking you first), opens GitHub in your browser so you can sign in, and downloads your copy. Say yes to its steps when they match what you asked." },
+          { room: "desk", title: "Open the new folder and start the setup", text: "Start a new session in your copy's folder, so the AI loads your OS. From now on, start every session there. Then:", cmd: { kind: "say", text: "Set up the OS for my company.", skill: "setup-os" } }
         ] },
       { id: "setup", group: "Start here", title: "Set up your company", line: "A short interview that fills the OS with your company.", who: "First admin, once", time: "30 to 45 minutes", next: "teammate",
         uses: [["skill", "setup-os"], ["file", "context/"], ["file", "team.md"], ["file", "AGENTS.md"]],
         steps: [
-          { room: "desk", title: "Start it", text: "If you just installed the OS, it has already started. Otherwise:", cmd: { kind: "say", text: "Set up the OS for my company.", skill: "setup-os" } },
+          { room: "desk", title: "Start it", text: "In a session in your company's folder:", cmd: { kind: "say", text: "Set up the OS for my company.", skill: "setup-os" } },
           { room: "github", title: "It checks your copy is private", text: "And that it belongs to your company, not the public template. If not, it fixes it with you." },
-          { room: "desk", title: "Answer one question at a time", text: "What you do, what you sell and for how much, who your customers are, how you talk, and which apps you use. Short answers are fine." },
-          { room: "inbox", title: "Add more if you like", text: "Share links or documents, or paste what another AI knows about your business. You can also do this later." },
-          { room: "library", title: "Check what it writes", text: "It shows the company knowledge before writing it, and keeps personal details about real clients out." },
+          { room: "inbox", title: "Give it what you already have", text: "Documents dropped into the inbox, links to your website or other pages, and what another AI like ChatGPT knows about your business. It reads them first." },
+          { room: "desk", title: "Answer what's missing", text: "Then it only asks about what your material didn't cover, one question at a time. Short answers are fine." },
+          { room: "library", title: "Check what it writes", text: "It shows the company knowledge before writing it. If something is about real people, it tells you what saving it means, and you choose what to keep." },
           { room: "team", title: "Tell it who's on the team", text: "For each person: name, work email, GitHub username, and admin or user." },
           { room: "github", title: "It saves everything", text: "Your company's OS is now on GitHub, private. Teammates can join, and this explorer fills in with your company." }
         ] },
@@ -1075,7 +1073,7 @@
       ["Session", "Each time you start your AI app in your company's folder. A quick check at the start downloads teammates' changes, and only speaks up if it fails."],
       ["Approvals", "Your AI asks before doing things like installing, downloading or uploading. Read what it wants to do, and say yes when it matches what you asked."],
       ["Key safe", "The <code>.env</code> file on your computer, where keys for your apps live. It's never uploaded, and a safety check stops keys from being saved anywhere else."],
-      ["Second brain", "Day-to-day memory, like notes about real clients and meetings, doesn't go in this repo. It goes in a second brain, coming in a later version."]
+      ["Second brain", "Day-to-day memory, like meeting notes and what a client said, fits better in a second brain, where deleting really works. Coming in a later version."]
     ];
 
     var copyIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>';
@@ -1103,6 +1101,7 @@
           '<a class="linkbtn" href="' + t.guide + '" target="_blank" rel="noopener">Getting started' + copyIcon + '</a></div>' +
           '<div class="cmd-note">' + esc(t.plan) + '</div>';
       }
+      if (c.kind === "link") return '<div class="links"><a class="linkbtn primary-link" href="' + esc(c.href) + '" target="_blank" rel="noopener">' + esc(c.label) + copyIcon + '</a></div>';
       if (c.kind === "start") return '<div class="cmd-note how">' + esc(t.start) + '</div>';
       return "";
     }
@@ -1958,7 +1957,7 @@ shredder.add(box(1.1, 1.2, 0.8, M(0xCFD3D6, { r: 0.6 }), 0, 0.6, 0, 0.14));
 shredder.add(box(0.8, 0.05, 0.12, M(C.ink), 0, 1.21, 0, 0.02));
 shredder.position.copy(SHRED);
 ib.group.add(shredder);
-mini("Personal data stays out", "inbox", shredder, 0, 1.9, 0);
+mini("Left out, if you choose", "inbox", shredder, 0, 1.9, 0);
 const MAILBOT = V(-12.9, 0, 9.6);
 const mailBot = makeRobot({ accent: C.pine });
 mailBot.position.copy(MAILBOT);
@@ -2915,7 +2914,7 @@ const STORY = {
     { text: "A robot reads each one as information only. If a document contains instructions, it ignores them and tells you.",
       cam: [V(-14, 0, 9), 20],
       async run(k) { k.place(mailBot, V(TRAY.x + 1.7, 0, TRAY.z + 0.5), TRAY); k.glowOn(tray, C.pine2, 0.2); k.chip(V(TRAY.x + 1.7, 3.0, TRAY.z), "Hidden instruction ignored", "ask"); await k.wait(1.8); } },
-    { text: "Personal details about real people are taken out. They don't belong in the company's files.",
+    { text: "If something is about real people, it tells you what saving it means, and you choose. Here the admin keeps the client names and leaves a phone number out.",
       cam: [V(-16, 0, 9.5), 20],
       async run(k) {
         clearGlows();
@@ -2923,7 +2922,7 @@ const STORY = {
         await k.fly(p, V(SHRED.x, 1.3, SHRED.z), 1.2, 0.9);
         await k.drop(p, 0.01, 0.35);
         await k.glow(shredder, C.cherry, 0.3, 0.8);
-        k.chip(V(SHRED.x, 2.4, SHRED.z), "Client names removed", "stop");
+        k.chip(V(SHRED.x, 2.4, SHRED.z), "Phone number left out", "stop");
         await k.wait(1);
       } },
     { text: "Before writing anything, it shows the plan and waits for a yes.",
@@ -2931,7 +2930,8 @@ const STORY = {
       async run(k) {
         const c = k.card(V(TRAY.x + 3.6, 3.2, TRAY.z), "The plan", [
           { text: offerFile + ": add one new price" },
-          { text: "Personal data left out", note: "2 names" }
+          { text: "Client names: kept", note: "your choice" },
+          { text: "A phone number: left out", note: "your choice" }
         ]);
         await k.wait(1.2);
         c.element.insertAdjacentHTML("beforeend", '<div class="row ok"><i></i><span>Approved by ' + UI.esc(adminName) + '</span></div>');

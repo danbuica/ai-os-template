@@ -8,7 +8,7 @@ I'm setting up an AI assistant for my business and want to move over what you kn
 
 1. **The business:** what it does, its history, goals, team roles.
 2. **What we sell:** products, services, prices, packages, terms.
-3. **Our customers:** the *types* of customers, what they need, their usual problems, why they choose us.
+3. **Our customers:** the kinds of customers and the main clients, what they need, their usual problems, why they choose us.
 4. **How we communicate:** tone, words I use or avoid, how I like things written, examples.
 5. **Tools and apps:** what we use for what.
 6. **How we work:** recurring processes, step by step, and what tends to go wrong.
@@ -16,7 +16,6 @@ I'm setting up an AI assistant for my business and want to move over what you kn
 
 Rules for your answer:
 - Business only. Leave out my private life, health, family and anything personal.
-- Don't include names, emails or other details of real clients or people. Describe them by type instead ("a small law firm").
 - Don't include passwords, keys or account numbers.
 - If you're unsure about something, mark it "(unsure)".
 

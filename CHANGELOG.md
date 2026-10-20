@@ -3,6 +3,12 @@
 What changed in each version of the AI OS template. Newest first.
 `update-os` shows the part between your version and the new one.
 
+## 1.1.0 (2026-10-20)
+
+- A simpler install: you make your private copy on GitHub with **Use this template**, then paste one message so your AI installs git and the GitHub CLI, signs you in and downloads it. Then you start a session in that folder and type `/setup-os`.
+- setup-os starts from what you already have (documents, links, what another AI knows about your business) and only asks about what's missing.
+- What goes in the repo about real people is now the admins' choice. The AI explains once what saving personal details means (shared with the team, kept in git history forever, data protection laws), then does what they choose. Keys and passwords still only go in `.env`.
+
 ## 1.0.0 (2026-10-18)
 
 First version.

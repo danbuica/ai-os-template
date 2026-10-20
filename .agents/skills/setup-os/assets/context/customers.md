@@ -1,6 +1,6 @@
 # Our customers
 
-<!-- Customer TYPES only. Never names or details of real customers: those belong in the second brain. -->
+<!-- Customer types, and the main clients if you want them here. The admin chooses what to keep about real people (AGENTS.md, section 6). -->
 
 ## Customer types
 

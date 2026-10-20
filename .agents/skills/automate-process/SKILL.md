@@ -11,7 +11,7 @@ Plain English throughout. One question at a time.
 
 ## a. Map the process
 
-Fill the template in `assets/process-template.md` together: the process name, who does it, how often, each step today, which apps, inputs and outputs, time it takes, and what goes wrong. Ask for one real recent example; it's what you'll test with later. Describe people by role, never real clients by name.
+Fill the template in `assets/process-template.md` together: the process name, who does it, how often, each step today, which apps, inputs and outputs, time it takes, and what goes wrong. Ask for one real recent example; it's what you'll test with later.
 
 - **Admin:** save it as `context/processes/<process-name>.md` (lowercase, hyphens).
 - **User:** don't save a file. Keep it for the issue in step f.
