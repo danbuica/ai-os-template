@@ -23,7 +23,7 @@ Read the template's address from `"upstream"` in `.os/manifest.json`. Then run:
 
 ```bash
 git remote -v
-gh repo view --json nameWithOwner,visibility,isFork,parent,owner
+gh repo view "$(git remote get-url origin)" --json nameWithOwner,visibility,isFork,parent,owner
 gh api users/OWNER --jq .type      # "Organization" or "User"
 ```
 
@@ -38,7 +38,7 @@ It's fine only if **all** of these are true: `origin` is not the template's addr
 - **It's their own repo but public.** Offer `gh repo edit --visibility private --accept-visibility-change-consequences`. Explain first: anyone who starred or watched it loses access.
 - **All good.** Continue.
 
-Then make sure the template is kept as `upstream` for future updates: `git remote get-url upstream`. If it's missing, run `git remote add upstream <the upstream address>`.
+Then make sure the template is kept as `upstream` for future updates: `git remote get-url upstream`. If it's missing, run `git remote add upstream <the upstream address>`. Then run `gh repo set-default origin`. Without it, gh picks `upstream` (the public template) for issues and invites.
 
 If the owner type is `User` (a personal account), explain: "On a personal account GitHub gives every invited person full write access, so the admin/user rule is only a polite check. A free GitHub organization fixes that." Don't block; let them choose.
 

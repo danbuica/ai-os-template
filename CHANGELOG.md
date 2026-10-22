@@ -3,6 +3,11 @@
 What changed in each version of the AI OS template. Newest first.
 `update-os` shows the part between your version and the new one.
 
+## 1.1.2 (2026-10-22)
+
+- Fixed: in a copy that also has the template as `upstream`, the GitHub CLI used the template instead of the company's copy, so add-teammate could invite people to the public template and issues could land there. The install message, setup-os and update-os now run `gh repo set-default origin`, add-teammate checks the repo before inviting anyone, and AGENTS.md has a rule that gh always works on `origin`.
+- If your copy already has an `upstream` remote, run `gh repo set-default origin` in it once (the AI does this the next time it uses gh). Check the template's pending invitations too, in case someone was invited there by mistake.
+
 ## 1.1.1 (2026-10-20)
 
 - When a skill needs an app that isn't connected in the AI app someone is using, the AI now stops and tells them which app is missing and how to connect it, instead of working around it. Connections are personal: each teammate connects their own apps.

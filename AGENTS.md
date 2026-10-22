@@ -45,6 +45,7 @@ This check is honest but soft: someone could change their git email. Real protec
 - Pull before starting work.
 - After every **finished** change to a skill, a context file, `team.md` or `automations.md`, run the **sync** skill straight away to save and upload it. Never upload half-done work.
 - Users never commit or push. They only pull.
+- `gh` must always work on this company's copy (`origin`), never on the template (`upstream`). When both remotes exist, gh picks `upstream` unless told otherwise. So before the first `gh` command in a session that touches the repo (issues, invites, settings), check that `gh repo set-default --view` shows the same repo as `git remote get-url origin`. If it doesn't, run `gh repo set-default origin`.
 
 ## 6. Data rules
 

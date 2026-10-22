@@ -7,6 +7,7 @@ description: Adds a person to the company's AI OS - records them in team.md with
 
 **Who:** admins only. If a user asks, offer to open a GitHub issue for the admins (AGENTS.md, section 4).
 **Needs:** the `gh` tool, signed in as someone who can manage the repo.
+**First:** run `gh repo set-default origin`, then check that `gh repo view --json nameWithOwner --jq .nameWithOwner` is the company's copy from `git remote get-url origin`. Otherwise gh can pick the template and invite people there.
 
 ## Adding someone
 

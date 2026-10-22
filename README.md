@@ -67,6 +67,7 @@ Anything else the OS needs (git and GitHub's own tool), your AI installs for you
    2. Sign me in to GitHub with gh in my browser, and set git to use that sign-in.
    3. Download my copy into this folder.
    4. In the new folder, add the template as a remote called upstream: https://github.com/danbuica/ai-os-template
+      Then run gh repo set-default origin, so gh always works on my copy and never on the template.
    5. Tell me how to open that folder in this app, so I can start a new session there.
    ```
 

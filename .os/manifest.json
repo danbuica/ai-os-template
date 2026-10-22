@@ -1,13 +1,13 @@
 {
   "template": "ai-os",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "upstream": "https://github.com/danbuica/ai-os-template.git",
   "skills": ["add-context", "add-teammate", "automate-process", "create-skill", "history", "os-guide", "setup-os", "sync", "update-os"],
   "files": {
     ".agents/hooks.json": "dcddec385ca1eac01326b134702fd57ff9afb1f7",
     ".agents/skills/add-context/SKILL.md": "941c0bdb479c092fe2346082ebeb3f82284e9b92",
     ".agents/skills/add-context/assets/ai-memory-prompt.md": "b208ea1f433f2714ae035635fe26b50ee6758c1a",
-    ".agents/skills/add-teammate/SKILL.md": "2c280cc9e79999c23f433320f58aefef79183e1f",
+    ".agents/skills/add-teammate/SKILL.md": "d01209cf074a2c599f56b0cee98a89e8892666e2",
     ".agents/skills/add-teammate/assets/welcome-message.md": "4249446d6c217994db47cf85ba6ee42ad43c57c7",
     ".agents/skills/automate-process/SKILL.md": "95c3e4bf1f29f8e2d97d268d0735f898a226b3da",
     ".agents/skills/automate-process/assets/issue-template.md": "56e7cc623f8ee3204e4abed7d552391ef30123f1",
@@ -18,7 +18,7 @@
     ".agents/skills/create-skill/assets/skill-template.md": "3159f5fa0eae94afef22185d7f268e6762fa9850",
     ".agents/skills/history/SKILL.md": "513055ae148041fde232c664db854ff4c12e59f7",
     ".agents/skills/os-guide/SKILL.md": "b0637ea56724395e024e703fbd0f83009a61d505",
-    ".agents/skills/setup-os/SKILL.md": "4288f0cfe6b2e61a3d29233751811382b0ca81cb",
+    ".agents/skills/setup-os/SKILL.md": "6092cd5393e4fdf291cea92d7ae19600745235a6",
     ".agents/skills/setup-os/assets/automations.md": "9468eb5128d6cf7b21e21cf8116ab2808a371e33",
     ".agents/skills/setup-os/assets/context/company.md": "97984fa288a0a69209e836fc31b7dfd19c6725bd",
     ".agents/skills/setup-os/assets/context/customers.md": "654778113f970ad9d4d696aa8b9e9fa976d208a0",
@@ -29,7 +29,7 @@
     ".agents/skills/setup-os/assets/routing-table.md": "4bb0344527d28f6e8025d1a0ba6f79343bba7ac6",
     ".agents/skills/setup-os/assets/team.md": "1788c6661eece85bc45ef1dbea34fa6fb9eab61b",
     ".agents/skills/sync/SKILL.md": "9b63e9d053d27b3c6b5a0118590a574de31395c9",
-    ".agents/skills/update-os/SKILL.md": "6ed2456478ccc817767c509e89c915cb49111714",
+    ".agents/skills/update-os/SKILL.md": "ca0ac6565fcc98c9837c226f4efb4f5413f7b3b5",
     ".agents/skills/update-os/scripts/update-os.sh": "0a1cdabba1b5cd9d94670a8ed328c09aae7cede1",
     ".claude/settings.json": "c2903f2997620f5c54f479cacba5ac1e5c0ff672",
     ".codex/hooks.json": "219870c7d195ed213f79bff34c2f96b17f8cfc9d",
@@ -43,10 +43,10 @@
     ".os/session-start.sh": "3e13c77331b7587d9ec0ce4d23d28ba808627c39",
     ".os/sync-skills.ps1": "44daf0ab0ececf34532115bbdadf768566f45dd3",
     ".os/sync-skills.sh": "33b2d651b248764ea74bc44f1e5c692c178fe980",
-    "AGENTS.md": "749cc4562a130af80a5abeb79738931f70273d35",
-    "CHANGELOG.md": "22e0969ed1ab596eb66f80364e2f82b862f60223",
+    "AGENTS.md": "d9f7067807af3690c867dbd8f69bffa3450a1bc6",
+    "CHANGELOG.md": "3ce601c7ab19851268db6f2b150f80b6cb569f09",
     "CLAUDE.md": "43c994c2d3617f947bcb5adf1933e21dabe46bb5",
-    "README.md": "74d7926b739c5b9e6fb3b83863f72a82521591be",
-    "explorer/index.html": "ecc99c737b9595f2b1017009a905a7e46245d5a1"
+    "README.md": "9b19a881cec73073c30229bfa0af3d2cdb289080",
+    "explorer/index.html": "de569984acbbe5115bf965ad02f515fb2cb02ad0"
   }
 }

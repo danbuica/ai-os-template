@@ -13,7 +13,7 @@ description: Installs a newer version of the AI OS template into this company's 
 ## 1. Get ready
 
 1. Run `git status`. If there are unsaved changes, run **sync** first. Start from a clean state.
-2. Make sure the template is set up as `upstream`: `git remote get-url upstream`. If it's missing, run `git remote add upstream <the "upstream" address in .os/manifest.json>`.
+2. Make sure the template is set up as `upstream`: `git remote get-url upstream`. If it's missing, run `git remote add upstream <the "upstream" address in .os/manifest.json>`. Then run `gh repo set-default origin` (if `gh` is installed), so gh keeps working on the company's copy and not the template.
 3. Run `git fetch upstream`.
 
 ## 2. Is there anything new?
